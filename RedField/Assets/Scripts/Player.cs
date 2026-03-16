@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private float horizontalInput;
-    private bool isFacingRight = true;
+    //private bool isFacingRight = true;
 
     private void Awake()
     {
@@ -29,13 +29,13 @@ public class Player : MonoBehaviour
             animator.SetFloat("Speed", Mathf.Abs(horizontalInput));
         }
 
-        if ((isFacingRight && horizontalInput < 0f) || (!isFacingRight && horizontalInput > 0f))
-        {
-            isFacingRight = !isFacingRight;
-            Vector2 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-        }
+        //if ((isFacingRight && horizontalInput < 0f) || (!isFacingRight && horizontalInput > 0f))
+        //{
+        //    isFacingRight = !isFacingRight;
+        //    Vector2 localScale = transform.localScale;
+        //    localScale.x *= -1f;
+        //    transform.localScale = localScale;
+        //}
     }
 
     private void FixedUpdate()
