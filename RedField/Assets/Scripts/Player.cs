@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        
         rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
+        Debug.Log("Player velocity: " + rb.linearVelocity);
     }
 }
