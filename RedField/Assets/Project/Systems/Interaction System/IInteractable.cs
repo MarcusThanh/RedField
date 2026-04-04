@@ -8,4 +8,7 @@ public interface IInteractable
     bool CanInteract { get; } // lets you disable mid-puzzle
     bool BeingChoose { get; set;}
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    
+    
 }

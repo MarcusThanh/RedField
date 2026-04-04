@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class SwordObject : MonoBehaviour, IInteractable
 {
+    
     public bool CanInteract => true;
     public InteractType interactType => InteractType.PickUp;
     public bool BeingChoose {get; set;}
