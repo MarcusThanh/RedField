@@ -4,4 +4,5 @@ public enum InteractType
     Dialogue,
     Inspect,
     PickUp,
+    
 }
