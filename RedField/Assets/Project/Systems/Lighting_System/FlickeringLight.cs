@@ -8,8 +8,8 @@ public class FlickeringLight : MonoBehaviour
 
     [Header("Cấu hình ánh sáng")]
     public float baseIntensity = 1.0f;     // Cường độ gốc
-    public float flickerAmount = 0.2f;    // Độ lệch (biên độ) nhấp nháy
-    public float speed = 2.5f;            // Tốc độ
+    public float flickerAmount = 0.17f;    //biên độ nhấp nháy
+    public float speed = 3f;            // Tốc độ
 
     private float _randomOffset;
 
