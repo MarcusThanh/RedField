@@ -955,6 +955,63 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &8189958349303168071
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3088773902306721307, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_Name
+      value: Cursed Oil Lamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.92952
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.01761
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357915880925975946, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c771e462fa20bb743aade668f9cde87e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -964,3 +1021,4 @@ SceneRoots:
   - {fileID: 436823010}
   - {fileID: 1742862854}
   - {fileID: 1647150601}
+  - {fileID: 8189958349303168071}
