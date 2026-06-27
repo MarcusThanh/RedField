@@ -1,0 +1,26 @@
+{
+  "startNodeID": "NODE_1",
+  "nodes": [
+    {
+      "nodeID": "NODE_1",
+      "speakerName": "Amber",
+      "dialogueText": "Even Stormterror has given up on its own temple.",
+      "choices": [
+        {
+          "choiceText": "Stormterror...?",
+          "nextNodeID": "NODE_END"
+        },
+        {
+          "choiceText": "Wait, did you just say \"its own temple...?\". I mean, this is a very long text to test if the button height will automatically increase when the text warps into multiple lines as you requested, bro!",
+          "nextNodeID": "NODE_END"
+        }
+      ]
+    },
+    {
+      "nodeID": "NODE_END",
+      "speakerName": "Amber",
+      "dialogueText": "Goodbye, Traveler!",
+      "choices": []
+    }
+  ]
+}
