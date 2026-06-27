@@ -1,15 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance { get; private set; }
 
-    [Header("UI References")]
+
     [Header("UI References")]
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TextMeshProUGUI speakerText;
@@ -24,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     private JSONDialogueData dialogueDatabase;
     private JSONDialogueNode currentNode;
     private Coroutine typingCoroutine;
-
+    
     private bool isTyping = false;
     private bool isDialogueActive = false;
     private List<GameObject> activeButtons = new List<GameObject>();
@@ -42,21 +43,46 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        dialoguePanel.SetActive(false);
-        choiceContainer.gameObject.SetActive(false);
+        InitDialogueSystem();
+    }
+
+private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        InitDialogueSystem();
+    }
+
+    // Hàm khởi tạo và dọn dẹp trạng thái an toàn
+    private void InitDialogueSystem()
+    {
+        isTyping = false;
+        isDialogueActive = false;
+        
+        if (dialoguePanel != null) dialoguePanel.SetActive(false);
+        if (choiceContainer != null) choiceContainer.gameObject.SetActive(false);
+        if (globalInteractPrompt != null) globalInteractPrompt.SetActive(false);
+        
+        ClearChoices();
     }
 
     private void Update()
     {
         if (!isDialogueActive) return;
 
-        // Click chuột trái để skip hoặc qua câu tiếp theo
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             OnPlayerClick();
         }
 
-        // Bấm phím số 1, 2, 3 để chọn câu trả lời nhanh
         if (currentNode != null && currentNode.choices != null && currentNode.choices.Count > 0 && !isTyping)
         {
             if (Keyboard.current.digit1Key.wasPressedThisFrame) SelectChoice(0);
@@ -65,7 +91,6 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    // Hàm bắt đầu thoại bằng cách truyền tên file JSON nằm trong thư mục Resources
     public void StartDialogue(string jsonFileName)
     {
         TextAsset jsonFile = Resources.Load<TextAsset>(jsonFileName);
@@ -80,7 +105,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
         choiceContainer.gameObject.SetActive(false);
 
-        // Tự động tìm Node đầu tiên dựa trên startNodeID trong file JSON
+        //Đoạn này Ông muốn khóa di chuyển player thì để đây
+
         DisplayNode(FindNodeByID(dialogueDatabase.startNodeID));
     }
 
@@ -94,7 +120,7 @@ public class DialogueManager : MonoBehaviour
 
         currentNode = node;
         speakerText.text = node.speakerName;
-
+        
         choiceContainer.gameObject.SetActive(false);
         ClearChoices();
 
@@ -106,7 +132,7 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         dialogueText.text = "";
-
+        
         foreach (char letter in textToType.ToCharArray())
         {
             dialogueText.text += letter;
@@ -157,7 +183,6 @@ public class DialogueManager : MonoBehaviour
             btnObj.GetComponent<Button>().onClick.AddListener(() => SelectChoice(choiceIndex));
         }
 
-        // Ép Canvas cập nhật lại giao diện ngay lập tức để tính toán lại kích thước co giãn
         LayoutRebuilder.ForceRebuildLayoutImmediate(choiceContainer);
     }
 
@@ -172,7 +197,6 @@ public class DialogueManager : MonoBehaviour
             Debug.Log($"Kích hoạt sự kiện: {selectedChoice.eventTriggerName}");
         }
 
-        // Tự động map sang node tiếp theo thông qua ID lưu trong lựa chọn đó
         JSONDialogueNode nextNode = FindNodeByID(selectedChoice.nextNodeID);
         DisplayNode(nextNode);
     }
@@ -194,5 +218,20 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         choiceContainer.gameObject.SetActive(false);
         ClearChoices();
+
+        // Chỗ này Thành muốn mở khóa di chuyển player thì bỏ vào đây
+    }
+
+    public void ShowInteractPrompt(Vector3 npcPosition)
+    {
+        if (globalInteractPrompt == null) return;
+        globalInteractPrompt.SetActive(true);
+        globalInteractPrompt.transform.position = npcPosition + new Vector3(0, 2.0f, 0);
+    }
+
+    public void HideInteractPrompt()
+    {
+        if (globalInteractPrompt == null) return;
+        globalInteractPrompt.SetActive(false);
     }
 }
