@@ -1,0 +1,54 @@
+{
+  "startNodeID": "AMBER_START",
+  "nodes": [
+    {
+      "nodeID": "AMBER_START",
+      "speakerName": "Amber",
+      "dialogueText": "Cậu thực sự tin vào lời đồn về căn phòng của Freya sao? Nơi đó đã bị phong tỏa từ vụ án năm ngoái rồi...",
+      "choices": [
+        {
+          "choiceText": "Tôi bắt buộc phải điều tra, có manh mối bị bỏ sót ở đó.",
+          "nextNodeID": "PATH_INVESTIGATE"
+        },
+        {
+          "choiceText": "Lời đồn? Cô biết gì về thực hư câu chuyện đó à?",
+          "nextNodeID": "PATH_LORE"
+        }
+      ]
+    },
+    {
+      "nodeID": "PATH_INVESTIGATE",
+      "speakerName": "Amber",
+      "dialogueText": "Cậu đúng là một thám tử ngoan cố. Được rồi, nhưng nếu nghe thấy tiếng động lạ sau bức tường... hãy chạy ngay lập tức!",
+      "choices": [
+        {
+          "choiceText": "Cảm ơn lời khuyên, tôi sẽ cẩn thận.",
+          "nextNodeID": "AMBER_END_GOOD"
+        }
+      ]
+    },
+    {
+      "nodeID": "PATH_LORE",
+      "speakerName": "Amber",
+      "dialogueText": "Người ta nói nửa đêm vẫn nghe tiếng bước chân bên trong... Cảnh sát trưởng đã cấm tất cả mọi người bén mảng đến gần khu vực đó.",
+      "choices": [
+        {
+          "choiceText": "Càng nguy hiểm, tôi càng phải vào xem thử.",
+          "nextNodeID": "AMBER_END_DANGER"
+        }
+      ]
+    },
+    {
+      "nodeID": "AMBER_END_GOOD",
+      "speakerName": "Amber",
+      "dialogueText": "Bảo trọng nhé. Tôi sẽ đứng ở sảnh đợi cậu, có chuyện gì cứ hét lên.",
+      "choices": []
+    },
+    {
+      "nodeID": "AMBER_END_DANGER",
+      "speakerName": "Amber",
+      "dialogueText": "Đừng nói là tôi không cảnh báo trước... Chúc cậu may mắn sống sót trở ra.",
+      "choices": []
+    }
+  ]
+}
